@@ -1,212 +1,126 @@
-# 📚 Comprehensive Java Exercise: Exploring Boolean Expressions, Loops, and Function Overloading
+# Building Blocks of Java Programming
 
-Computers excel at performing repetitive tasks with precision. If you were asked to count to 10,000, it might be tedious and prone to errors, but a computer can do it perfectly every time. This concept of repeating actions is known as _iteration_ or _looping_. Today, we will explore different looping mechanisms in Java and how they interplay with boolean expressions and function overloading.
+Computers excel by performing repetitive tasks without error or exhaustion, unlike humans who could quickly grow tired of monotony. This ability is harnessed through concepts such as _iteration_ or _looping_. This task will guide you through various programming constructs in Java, enabling you to implement complex logic efficiently.
 
-### 👨‍🏫 Instructions
+### 👩‍🏫 Instructions
 
-For instructions on how to complete and submit the assignment, please refer to the [assignments section of the course instructions](https://gits-15.sys.kth.se/inda-24/course-instructions#assignments).
+For instructions on how to complete and submit this assignment, please see the [assignment section of the course instructions](https://gits-15.sys.kth.se/inda-24/course-instructions#assignments).
 
 ### 📝 Preparation
 
-- Review the [lecture slides](https://docs.google.com/presentation/d/1kcsmcuBBu4Jr3O_r6eNP6IFrP6DEITDWeRS5_7rtV30/edit#slide=id.p).
-- Read and answer questions in:
-  - [Module 5: Looping with for-each](https://qbl.sys.kth.se/sections/dd1337_programming/page/looping_with_foreach)
-  - [Module 6: Iteration](https://qbl.sys.kth.se/sections/dd1337_programming/page/iteration__continued)
+- Review the [lecture slides](https://docs.google.com/presentation/d/1kcsmcuBBu4Jr3O_r6eNP6IFrP6DEITDWeRS5_7rtV30/edit#slide=id.p)
+- Study the modules:
+  - [Boolean Expressions and Operators](https://qbl.sys.kth.se/sections/dd1337_programming/page/boolean_expressions)
+  - [Introduction to Java Loops](https://qbl.sys.kth.se/sections/dd1337_programming/page/java_loops)
 
 ### ✅ Learning Goals
 
-This week's learning objectives are:
+By the end of this task, you should be proficient in:
 
-- Understanding `boolean` expressions and operators
-- Efficient use of `while` loops
-- Mastery of `for` loops
-- Using JShell to try your Java program
-- Grasping Function overloading
+- Utilizing `boolean` expressions and logical operators
+- Implementing the `while` and `for` loops
+- Employing JShell to experiment with snippets and debug your code
+- Understanding and applying function overloading
 
 ### 🚨 Troubleshooting Guide
 
-If you have any questions or issues, take these steps:
+If you encounter issues while working on this task:
 
-1. Look at this week's [posted issues](https://gits-15.sys.kth.se/inda-24/help/issues) to see if others are experiencing similar problems.
-2. If not, create a [New Issue](https://gits-15.sys.kth.se/inda-24/help/issues/new) with a descriptive title beginning with "Task _x_: _summary of problem here_".
-3. Seek help from a TA during the [weekly lab](https://queue.csc.kth.se/Queue/INDA).
-
-Discuss with your course mates, but **do not share answers**. If using AI services to understand concepts, **do not submit AI-generated solutions**. Be responsible for your code understanding and explanation.
+1. Check this week’s [posted issues](https://gits-15.sys.kth.se/inda-24/help/issues). Your concern might have already been addressed.
+2. If your issue isn't listed, post a new question by creating a [New Issue](https://gits-15.sys.kth.se/inda-24/help/issues/new), starting the title with "Task _x_: _summary of problem here_".
+3. Attend the [weekly lab](https://queue.csc.kth.se/Queue/INDA) for direct assistance from a TA. Refer to your schedule for timings.
 
 ### 🏛 Assignment
 
-Before implementing loops in Java, it’s pivotal to grasp how to specify the loop stopping condition, usually determined by evaluating _boolean expressions_. Here's a practical exploration:
+This assignment combines multiple Java concepts including conditional logic and looping. You will additionally engage with input validation and function overloading, ultimately designing an interactive Java application.
 
-<details>
-<summary> 📚 Boolean Expressions and Operators </summary>
+#### Exercise 5.1 — Boolean Expressions and Operators
 
-A [boolean value](https://en.wikipedia.org/wiki/Boolean_data_type) is either true or false. Similarly, a [boolean expression](https://en.wikipedia.org/wiki/Boolean_expression) evaluates to true or false.
+Start with boolean basics before you delve into loops.
 
-In Java, `boolean` is one of the eight [primitive types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html). It can have the value `true` or `false`.
+- Using JShell, evaluate and complete the following table found in [`docs/README.md`](docs/README.md):
 
-Example definitions in Java:
+  | Boolean expression              | Value    |
+  | ------------------------------- | -------- |
+  | `5 == 5`                        | `true`   |
+  | `3 > 8`                         |          |
+  | `!false`                        |          |
+  | `(6 <= 10) && (10 > 5)`         |          |
+  | `!(3 == 4) || (2 != 2)`         |          |
+
+> **Assistant's tip:** JShell is a great way to test Java expressions without the need to run a full program. Open your terminal and type `jshell` to start testing expressions like `5 == 5`.
+
+#### Exercise 5.2 — Implementing While and For Loops
+
+Create a new Java file named `LoopingTask.java` in your `src` directory and implement the following exercises.
+
+##### Exercise 5.2.1 — While Loop
+
+Add the following method to your file:
 ```java
-boolean theCapitalOfMozambiqueIsMaputo = true;
-boolean twoEqualsFive = false;
-```
-
-Key boolean operators are `&&` (and), `||` (or), and `!` (not).
-
-Just like arithmetic, parentheses can influence evaluation order. For example, `true || (true && false)` is `true`, whereas `(true || true) && false` is `false`.
-
-</details>
-
-#### Exercise 1.1 – Boolean Expressions
-
-In [`docs/README.md`](docs/README.md), fill the boolean value for each expression:
-
-| Boolean expression | Value   |
-| ------------------ | ------- |
-| `2 > 5`            |         |
-| `11 == 11`         |         |
-| `7 <= 9`           |         |
-| `42 >= 7`          |         |
-| `false == true`    |         |
-
-#### Exercise 1.2 – Boolean Operators
-
-Fill in the table in [`docs/README.md`](docs/README.md):
-
-| Boolean expression   | Value |
-| -------------------- | ----- |
-| `2 == 3 && 2 == 2`   |       |
-| `2 == 3 || 2 == 2`   |       |
-| `!true`              |       |
-| `!false`             |       |
-
-> **Assistant's Tip:** Use [JShell](https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm) for evaluating Java expressions like `2 == 5`.
-
-#### Exercise 2.1 – The `while` Loop
-
-Create `Loops.java` in `src`. Add a method:
-
-```java
-public void printOddNumbersUpTo(int n)
-```
-
-This uses a `while` loop to print all odd numbers up to `n`.
-
-<details>
-<summary> 📘 Understanding the `while` loop</summary>
-
-The `while` loop is fundamental, continually executing while a condition remains true:
-
-```java
-int count = 0;
-while (count < 5) {
-    count += 1;
+public void printEvenNumbersUpTo(int max) {
+    // Use a while loop to print even numbers from 0 to max
 }
 ```
-Predict the final `count` and test to confirm your intuition.
+This method should print all even numbers from 0 up to the specified `max` parameter using a `while` loop.
 
-</details>
+##### Exercise 5.2.2 — For Loop
 
-#### Exercise 2.2 – Summing with a `while` loop
-
-Add to `Loops.java`:
-
+Now, add this method:
 ```java
-public int sumEvensUpTo(int max)
-```
-
-This calculates the sum of even numbers from `0` to `max`, inclusive, return `0` if `max < 0`.
-
-#### Exercise 2.3 – Using `for` Loops
-
-Add to `Loops.java`:
-
-```java
-public int factorial(int n)
-```
-
-Use a `for` loop to compute and return the factorial of `n`.
-
-<details>
-<summary> 📘 Understanding the `for` loop</summary>
-
-A `for` loop condenses loop creation:
-
-```java
-for (int i = 0; i < 10; i++) {
-    System.out.println(i);
+public int factorial(int number) {
+    // Use a for loop to return factorial of the given number
 }
 ```
+Calculate and return the factorial of a number using a `for` loop. Remember, factorial of 0 and 1 is 1. If the input is negative, return 0.
 
-More compact than its `while` loop equivalent:
+#### Exercise 5.3 — Function Overloading
+
+Within the same Java file, demonstrate function overloading by implementing:
 
 ```java
-int i = 0;
-while (i < 10) {
-    System.out.println(i);
-    i += 1;
+public int multiply(int a, int b) {
+    // Return the product of a and b
 }
 ```
-
-</details>
-
-#### Exercise 2.4 – Expanding Functions
-
-Create additional methods in `Loops.java`:
-
 ```java
-public int sumSquaresUpTo(int max)
-public double calculateHarmonicSum(int n)
+public double multiply(double a, double b) {
+    // Return the product of a and b as a double
+}
 ```
+Both methods should perform multiplication, but they must demonstrate overloading by using different parameter types.
 
-Implement these with loops per the mathematical summations depicted.
+#### Exercise 5.4 — Practical Application
 
-#### Exercise 3.1 – Time Implementation
+You will develop a program that simulates a counter class in Java, with attributes to track its current value and increment it under certain conditions.
 
-Construct `Clock.java` in `src`. Fields should track hours, minutes, and seconds, with appropriate privacy and public getter methods using camelCase.
+##### Exercise 5.4.1 — Class and Constructors
 
-#### Exercise 3.2 – Valid Setter Methods
+Create a class `Counter` inside `Counter.java` in your `src` and declare the necessary fields.
 
-Introduce validating setters: `setHours`, `setMinutes`, `setSeconds` ensuring valid inputs (hours: 1-12, minutes/seconds: 0-59).
+- Implement two constructors:
+  - A default constructor initializing the counter to 0.
+  - Another constructor initializing to a specified value.
 
-#### Exercise 3.3 – Constructors with Overloading
+##### Exercise 5.4.2 — Using Loops with Class
 
-Implement overloaded constructors:
+Add methods to this class:
 
-```java
-public Clock()
-public Clock(int hours, int minutes, int seconds)
-```
-Leverage setters for validating inputs.
+- `public void increment()`: This should increment the counter by 1.
+- `public void increment(int max)`: This function overloads the previous method, using a loop to repeatedly call `increment()` until the counter reaches `max`.
 
-#### Exercise 3.4 – Override toString
+##### Exercise 5.4.3 — Presentation and Validation
 
-Override `toString` in `Clock` to format time as `HH:MM:SS`. Utilize `String.format`.
-
-#### Exercise 3.5 – Adding a `tick` Method
-
-Implement `public void tick()` in `Clock.java` to increment seconds, cascading to minutes and hours as necessary.
-
-#### Exercise 3.6 – Expanding `tick` Method
-
-Enhance `tick` with:
-
-```java
-public void tick(int seconds)
-```
-
-A loop (your choice of `for` or `while`) to increment time by specified seconds, using `tick()` method gradually.
+Provide a string representation of your Counter class using `toString()`. Ensure your counter does not go negative—protect it using boolean logic in your increments.
 
 ### ❎ Checklist
 
-1. [ ] Complete boolean exercises in `docs`.
-2. [ ] Implement `printOddNumbersUpTo(int n)` with a `while` loop.
-3. [ ] Implement `sumEvensUpTo(int max)` with a `while` loop.
-4. [ ] Implement `factorial(int n)` with a `for` loop.
-5. [ ] Implement extended functions with loops in `Loops.java`.
-6. [ ] Construct `Clock` class and include fields with accessors.
-7. [ ] Validate inputs through setter methods in `Clock`.
-8. [ ] Add constructors and use overloading intelligently in `Clock`.
-9. [ ] Override `toString` for `Clock` to represent time correctly.
-10. [ ] Implement `tick` methods in `Clock` to adjust time accurately.
+- [ ] Filled out `docs/README.md` for boolean expressions.
+- [ ] Implemented `printEvenNumbersUpTo(int max)` with a `while` loop.
+- [ ] Implemented `factorial(int number)` using a `for` loop.
+- [ ] Demonstrated function overloading with `multiply()` methods.
+- [ ] Created `Counter.java` with correct constructors and methods.
+- [ ] Implemented both `increment()` methods.
+- [ ] Ensured `Counter` toString method is overridden for meaningful output.
 
-Tackle each task carefully, utilizing concepts like `boolean` expressions, loops, and overloading, refining your Java skills!
+Remember to thoroughly test your code using both JShell for quick checks and a Java IDE for comprehensive testing. Happy coding!
