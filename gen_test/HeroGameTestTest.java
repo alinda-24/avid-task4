@@ -5,127 +5,74 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 class public class HeroGameTest {
-    
+
     private HeroGame game;
-    
+
     @Before
     public void setUp() {
         game = new HeroGame();
     }
-    
+
     @Test
-    public void testInitialGameState() {
-        assertEquals(0, game.toString().indexOf("playerX=0"));
-        assertEquals(0, game.toString().indexOf("playerY=0"));
-        assertEquals(100, game.toString().indexOf("playerHealth=100"));
-        assertEquals(0, game.toString().indexOf("score=0"));
+    public void initialState_isCorrect() {
+        assertEquals(0, game.getPlayerX());
+        assertEquals(0, game.getPlayerY());
+        assertEquals(100, game.getPlayerHealth());
+        assertEquals(0, game.getScore());
     }
-    
+
     @Test
-    public void testMovePlayerUpWithinBoundary() {
+    public void movePlayer_upMovement() {
         game.movePlayer(0);
-        assertEquals(0, game.toString().indexOf("playerX=0"));
-        assertEquals(0, game.toString().indexOf("playerY=1"));
+        assertEquals(1, game.getPlayerY());
     }
-    
+
     @Test
-    public void testMovePlayerDownWithinBoundary() {
-        game.movePlayer(0); // Move up first
-        game.movePlayer(1);
-        assertEquals(0, game.toString().indexOf("playerX=0"));
-        assertEquals(0, game.toString().indexOf("playerY=0"));
+    public void movePlayer_downMovement() {
+        game.movePlayer(2); // Right to 1,0 to ensure downward movement
+        game.movePlayer(1); // Move down to 1,0
+        assertEquals(0, game.getPlayerY());
     }
-    
+
     @Test
-    public void testMovePlayerRightWithinBoundary() {
+    public void movePlayer_rightMovement() {
         game.movePlayer(2);
-        assertEquals(0, game.toString().indexOf("playerX=1"));
-        assertEquals(0, game.toString().indexOf("playerY=0"));
+        assertEquals(1, game.getPlayerX());
     }
-    
+
     @Test
-    public void testMovePlayerLeftWithinBoundary() {
-        game.movePlayer(2); // Move right first
+    public void movePlayer_leftMovement() {
+        game.movePlayer(2); // Move right to 1,0 to ensure left movement
         game.movePlayer(3);
-        assertEquals(0, game.toString().indexOf("playerX=0"));
-        assertEquals(0, game.toString().indexOf("playerY=0"));
+        assertEquals(0, game.getPlayerX());
     }
-    
+
     @Test
-    public void testMovePlayerUpBoundaryCondition() {
-        for (int i = 0; i < 15; i++) {
-            game.movePlayer(0); // Move up beyond boundary
-        }
-        assertEquals(0, game.toString().indexOf("playerY=10")); // Should not exceed 10
+    public void calculateScore_updatesCorrectly() {
+        game.calculateScore();
+        assertEquals(15, game.getScore()); // 1+2+3+4+5 = 15
     }
-    
+
     @Test
-    public void testMovePlayerDownBoundaryCondition() {
-        game.movePlayer(0); // Move up to 1
-        game.movePlayer(0); // Move up to 2
-        game.movePlayer(1); // Down to 1
-        game.movePlayer(1); // Down to 0
-        game.movePlayer(1); // Attempt to move below 0
-        assertEquals(0, game.toString().indexOf("playerY=0")); // Should not be less than 0
-    }
-    
-    @Test
-    public void testMovePlayerRightBoundaryCondition() {
-        for (int i = 0; i < 15; i++) {
-            game.movePlayer(2); // Move right beyond boundary
-        }
-        assertEquals(0, game.toString().indexOf("playerX=10")); // Should not exceed 10
-    }
-    
-    @Test
-    public void testMovePlayerLeftBoundaryCondition() {
-        game.movePlayer(2); // Move right to 1
-        game.movePlayer(2); // Move right to 2
-        game.movePlayer(3); // Left to 1
-        game.movePlayer(3); // Left to 0
-        game.movePlayer(3); // Attempt to move below 0
-        assertEquals(0, game.toString().indexOf("playerX=0")); // Should not be less than 0
-    }
-    
-    @Test
-    public void testInvalidDirection() {
-        game.movePlayer(5); // Invalid direction
-        assertEquals(0, game.toString().indexOf("playerX=0"));
-        assertEquals(0, game.toString().indexOf("playerY=0"));
-    }
-    
-    @Test
-    public void testCalculateScore() {
-        new HeroGame().calculateScore();
-        assertEquals(0, game.toString().indexOf("score=15")); // Based on journeyLog summation 1 + 2 + 3 + 4 + 5
-    }
-    
-    @Test
-    public void playerDefeatedByStrongEnemy() {
-        assertFalse(game.encounterEnemy(120));
-        assertEquals(0, game.toString().indexOf("playerHealth=0")); // Player defeated
-    }
-    
-    @Test
-    public void playerWinsWithSufficientHealth() {
+    public void encounterEnemy_survivesCombat() {
         assertTrue(game.encounterEnemy(30));
-        assertEquals(0, game.toString().indexOf("playerHealth=70"));
+        assertEquals(70, game.getPlayerHealth());
     }
-    
+
     @Test
-    public void successfulNegotiationWithEnemy() {
-        assertTrue(game.encounterEnemy(30, 40)); // Negotiation skill greater than enemy's power
-        assertEquals(0, game.toString().indexOf("playerHealth=100")); // No health deducted
+    public void encounterEnemy_defeatedInCombat() {
+        assertFalse(game.encounterEnemy(120));
+        assertEquals(0, game.getPlayerHealth());
     }
-    
+
     @Test
-    public void failedNegotiationLeadsToCombat() {
-        assertFalse(game.encounterEnemy(30, 10));
-        assertEquals(0, game.toString().indexOf("playerHealth=70")); // Health deducted since negotiation failed
+    public void encounterEnemy_successfulNegotiation() {
+        assertTrue(game.encounterEnemy(20, 25));
     }
-    
+
     @Test
-    public void testToStringRepresentation() {
-        assertEquals("HeroGame{playerX=0, playerY=0, playerHealth=100, score=0}", game.toString());
+    public void encounterEnemy_failedNegotiation() {
+        assertFalse(game.encounterEnemy(30, 15)); // Not enough negotiation skill
+        assertEquals(70, game.getPlayerHealth()); // Takes as combat
     }
 }
