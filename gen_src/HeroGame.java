@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class HeroGame {
@@ -5,51 +6,50 @@ public class HeroGame {
     private int playerX;
     private int playerY;
     private int playerHealth;
-    private List<Integer> journeyLog;
     private int score;
-    private static final int BOUNDARY_X = 10; // Example boundary value
-    private static final int BOUNDARY_Y = 10; // Example boundary value
+    private List<Integer> journeyLog;
+    private static final int BOUNDARY_X = 100;
+    private static final int BOUNDARY_Y = 100;
 
     public HeroGame() {
-        // Initialize the game state here
-        playerX = 5; // Example initial position
-        playerY = 5; // Example initial position
-        playerHealth = 100; // Example initial health
+        playerX = 50; // Initial player position (example value)
+        playerY = 50; // Initial player position (example value)
+        playerHealth = 100; // Initial health
         journeyLog = new ArrayList<>();
     }
 
     // Method to move player in different directions
     public void movePlayer(int direction) {
-        switch (direction) {
-            case 1: // Move up
-                playerY++;
-                break;
-            case 2: // Move down
-                playerY--;
-                break;
-            case 3: // Move left
-                playerX--;
-                break;
-            case 4: // Move right
-                playerX++;
-                break;
-            default:
-                // Invalid direction
-                break;
+        while (true) {
+            switch (direction) {
+                case 0: // Move up
+                    playerY++;
+                    break;
+                case 1: // Move down
+                    playerY--;
+                    break;
+                case 2: // Move left
+                    playerX--;
+                    break;
+                case 3: // Move right
+                    playerX++;
+                    break;
+                default:
+                    // Invalid direction
+                    break;
+            }
+            journeyLog.add(direction);
+            
+            // Example of manual exit from the loop (for demonstration purposes only)
+            if (playerX == BOUNDARY_X || playerY == BOUNDARY_Y || playerX == 0 || playerY == 0) break;
         }
-        
-        journeyLog.add(direction);
-
-        // Example of manual exit from the loop (for demonstration purposes only)
-        // Commented out because there is no loop here
-        // if (playerX == BOUNDARY_X || playerY == BOUNDARY_Y || playerX == 0 || playerY == 0) break;
     }
 
     // Method to calculate score
     public void calculateScore() {
         int steps = 0;
         for (int step : journeyLog) {
-            steps++; // Update step count
+            steps++;
         }
         score = steps; // Simple scoring by steps
         System.out.println("Score: " + score);
@@ -59,10 +59,10 @@ public class HeroGame {
     public boolean encounterEnemy(int enemyPower) {
         if (enemyPower > playerHealth) {
             // TODO: Implement logic and return the appropriate value.
-            return false; // Placeholder
+            return false;
         } else {
             // TODO: Implement logic and return the appropriate value.
-            return true; // Placeholder
+            return true;
         }
     }
 
@@ -70,39 +70,42 @@ public class HeroGame {
     public boolean encounterEnemy(int enemyPower, int negotiationSkill) {
         if (negotiationSkill > enemyPower) {
             // TODO: Implement logic and return the appropriate value.
-            return true; // Placeholder
+            return true;
         } else {
             // TODO: Implement logic and return the appropriate value.
-            return false; // Placeholder
+            return false;
         }
     }
 
     // Override toString to display current game state
     @Override
     public String toString() {
-        // TODO: Implement logic and return the appropriate value.
-        return "HeroGame [Position=(" + playerX + "," + playerY + "), Health=" + playerHealth + ", Score=" + score + "]";
+        return "HeroGame{" +
+                "playerX=" + playerX +
+                ", playerY=" + playerY +
+                ", playerHealth=" + playerHealth +
+                ", score=" + score +
+                '}';
     }
 
     // Main method to illustrate gameplay (simplified)
     public static void main(String[] args) {
         HeroGame game = new HeroGame();
 
-        // Example of moving player and calculating score
-        game.movePlayer(1);
+        game.movePlayer(0); // Move up
         game.calculateScore();
 
         if (game.encounterEnemy(30)) {
-            System.out.println("Enemy defeated!");
+            System.out.println("Win the fight!");
         } else {
-            System.out.println("Lost to the enemy!");
+            System.out.println("Lose the fight!");
         }
 
         // Negotiation encounter with enemy of power 20 and negotiation skill 25
         if (game.encounterEnemy(20, 25)) {
-            System.out.println("Successfully negotiated!");
+            System.out.println("Negotiation success!");
         } else {
-            System.out.println("Failed to negotiate!");
+            System.out.println("Negotiation failed!");
         }
 
         // Display final game state
