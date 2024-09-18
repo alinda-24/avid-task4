@@ -1,192 +1,107 @@
-# 🚀 Simple Java Game: Player vs. Enemies
+# Game Development: Hero's Quest
 
-Dive into the exciting world of game development with this Java assignment! You will create a basic game application with player movement, a scoring system, and enemy interactions.
-
-### 💀 Deadline
-Complete this assignment by **Friday, November 30th**.
+Video games are a fascinating way to learn programming concepts such as loops, conditions, and interactions. This week, you'll be diving into the basics of game development by crafting a simple game application called "Hero's Quest." In this game, you will implement player movement, a scoring system, and interactions with enemies. You'll integrate boolean expressions, loops, and JShell experimentation along the way. Game on! 🎮
 
 ### 👩‍🏫 Instructions
-For detailed instructions on how to complete and submit this assignment, please refer to the [course instructions](https://yourcourse.edu/assignments).
+
+For instructions on how to do and submit the assignment, please see the [assignments section of the course instructions](https://example.com/course-instructions#assignments).
 
 ### 📝 Preparation
-Before you start, ensure you've completed the following readings and exercises:
 
-- [Understanding Classes and Objects in Java](https://yourcourse.edu/module3/classes-and-objects)
-- If you haven't already, register for the course platform with the key `game-dev-23` at [our learning site](https://yourcourse.edu).
-
-> **Note:** The material may slightly differ from last year, so moving ahead is helpful if needed.
+- Review the [lecture slides on Game Loops and Interactions](https://docs.google.com/presentation/d/12345/edit#slide=id.p)
+- Read about and understand:
+  - [Module: Boolean Logic and Loops](https://example.com/course/boolean-logic-loops)
+  - [Java Documentation: Function Overloading and JShell](https://docs.oracle.com/javase/tutorial/)
 
 ### ✅ Learning Goals
 
-After finishing this assignment, you should be able to:
+This week's learning goals include:
 
-* Design Java classes
-* Add instance fields
-* Add a constructor method
-* Create *getters* and *setters*
-* Print to the terminal
-* Use the `main` method
-* Understand Scope (or *variable shadowing*)
+* `boolean` expressions and operators
+* `while` loops
+* `for` loops
+* Using JShell to try your Java program
+* Function overloading
 
 ### 🚨 Troubleshooting Guide
-Follow these steps if you encounter issues:
 
-1. Review this week's [frequently asked questions](https://yourcourse.edu/help/faqs).
-2. Post your question in the forum by creating a [New Topic](https://yourcourse.edu/forum/new).
-3. Reach out to a Teaching Assistant during [lab hours](https://yourcourse.edu/lab-schedule).
+If you have any questions or problems, follow this procedure: <br/>
 
-Collaborate with peers, but **do not share code directly**!
+1. Look at this week's [posted issues](https://example.com/help/issues). Are other students asking about your problem?
+2. If not, post a question yourself by creating a [New Issue](https://example.com/help/issues/new). Add a descriptive title, beginning with "Hero's Quest: summary of problem here."
+3. Ask a TA in person during the [weekly lab](https://example.com/queue). Check your schedule to see when the next lab is.
 
-### 🎮 Assignment: Build Your Game!
+We encourage you to discuss with your course friends, **but do not share answers!** Similarly, use of any AI services 🤖 is great for explanations, **but please do not submit AI-generated solutions** - you must be both responsible for your own solutions and must be able to explain them under examination.
 
-In this assignment, you will develop a simple 2D game featuring player movement, a dynamic scoring system, and exciting enemy interactions. Let's begin your journey to become a game developer!
+### 🏛 Assignment
 
-#### Exercise 1 -- Player Class
-Begin by creating a `Player.java` class in the `src` folder. This class should have the following fields:
-
-- `String name`
-- `int score`
-- `int positionX`
-- `int positionY`
+In order to create your game, you must understand how the player interacts with the game world using `boolean` expressions, and how iterations (`while` and `for` loops) can manage game flow.
 
 <details>
-  <summary> 🛠 Example Code </summary>
+<summary> 📚 Boolean values, expressions, and operators </summary>
+<! -- requires a blank space -->
 
-  ```java
-  public class Player {
-  
-      private String name;
-      private int score;
-      private int positionX;
-      private int positionY;
-  
-      public Player(String name) {
-          this.name = name;
-          this.score = 0; // Starting score
-          this.positionX = 0; // Starting position
-          this.positionY = 0;
-      }
-  
-      // Getter and Setter methods for each field
-      public String getName() { return name; }
-      public int getScore() { return score; }
-      public int getPositionX() { return positionX; }
-      public int getPositionY() { return positionY; }
-      
-      public void setPositionX(int x) { this.positionX = x; }
-      public void setPositionY(int y) { this.positionY = y; }
-      public void increaseScore(int points) { this.score += points; }
-  
-      public void printInfo() {
-          System.out.println("Player: " + name);
-          System.out.println("Score: " + score);
-          System.out.println("Position: (" + positionX + ", " + positionY + ")");
-      }
-  }
-  ```
+A [boolean value](https://en.wikipedia.org/wiki/Boolean_data_type) is a value that is either true or false. In Java, `boolean` is one of the 8 [primitive types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html), and can have the value `true` or `false`.
 
-  Use the provided structure to create player objects with initial values and methods to modify their state.
+Booleans help evaluate game conditions—like whether a player has collided with an enemy. Java uses `&&` for "and", `||` for "or" and `!` for "not".
+
 </details>
 
-#### Exercise 2 -- Enemy Class
-Create an `Enemy.java` class to represent game adversaries. It should include:
+#### Exercise 1 -- Setting Up
 
-- `String type`
-- `int positionX`
-- `int positionY`
-- `int damage`
+Create a new Java class named `HeroGame.java` in your `src` folder.
 
-<details>
-  <summary> 🛠 Example Code </summary>
+#### Exercise 2 -- Implementing Player Movement
 
-  ```java
-  public class Enemy {
+1. **Set Up Fields:** Create fields for player position (`x`, `y`) and health, ensuring they suit your game's requirements. Make sure they are private.
+2. **Movement Method:** Write a method using a `while` loop to handle continuous player movement. It should have the signature:
+   ```java
+   public void movePlayer(int direction)
+   ```
+   Use `boolean` expressions to determine movement within bounds (e.g., if the player tries to move outside game boundaries, stop them).
 
-      private String type;
-      private int positionX;
-      private int positionY;
-      private int damage;
+#### Exercise 3 -- Scoring System with Loops
 
-      public Enemy(String type, int damage) {
-          this.type = type;
-          this.damage = damage;
-          this.positionX = (int) (Math.random() * 100); // Random initial position
-          this.positionY = (int) (Math.random() * 100);
-      }
-
-      // Getter methods
-      public String getType() { return type; }
-      public int getDamage() { return damage; }
-      public int getPositionX() { return positionX; }
-      public int getPositionY() { return positionY; }
-  }
-  ```
-
-  These enemies will randomly appear and interact with the player. Implement and test basic movement logic by using constructors and methods.
-</details>
-
-#### Exercise 3 -- Player Movement
-Implement a `move` method in the `Player` class allowing the player to navigate the game world. Movement options include:
-
-- Up
-- Down
-- Left
-- Right
-
-<details>
-  <summary> 🛠 Implementation Example </summary>
-
-  ```java
-  public void move(String direction) {
-      switch (direction.toLowerCase()) {
-          case "up": positionY++; break;
-          case "down": positionY--; break;
-          case "left": positionX--; break;
-          case "right": positionX++; break;
-          default: System.out.println("Invalid move!"); break;
-      }
-      System.out.println("Player moved " + direction + ". New position: (" + positionX + ", " + positionY + ")");
-  }
-  ```
-
-  This method allows your player objects to interact with their environment by moving around.
-</details>
-
-#### Exercise 4 -- Interaction with Enemies
-Develop an interaction method where if a `Player` comes within a certain distance (e.g., `1` unit) of an `Enemy`, the player's score decreases by the enemy's damage value.
-
-<details>
-  <summary> 🛠 Interaction Implementation </summary>
-
-  ```java
-  public void interact(Enemy enemy) {
-      if (Math.abs(this.positionX - enemy.getPositionX()) <= 1 && 
-          Math.abs(this.positionY - enemy.getPositionY()) <= 1) {
-          this.score -= enemy.getDamage();
-          System.out.println("Hit by " + enemy.getType() + "! Score decreased to: " + this.score);
-      }
-  }
-  ```
-
-  This ensures realistic interactions, reflecting adversaries' proximity impact.
-</details>
-
-#### Exercise 5 -- Variable Shadowing
-Consider potential variable shadowing issues with similar field and method parameters. Ensure correct usage of `this` to reference instance fields. Analyze these examples:
-
+Add a method to calculate and display the player's score using a `for` loop. Players score points for every step taken without interaction with an enemy. Use the header:
 ```java
-public class Example {
-    private int sampleValue = 42;
+public void calculateScore()
+```
+The method should iterate over a journey log array, counting steps and updating the score.
 
-    public void showValue(int sampleValue) {
-        System.out.println(sampleValue); // It prints method parameter instead of instance field.
-    }
-}
+#### Exercise 4 -- Enemy Interactions
+
+Write a method to simulate encounters with enemies:
+```java
+public boolean encounterEnemy(int enemyPower)
+```
+Use `boolean` logic to decide outcomes based on the player's health and the enemy's power. Test outcomes using JShell to see how `boolean` expressions evaluate during encounters:
+
+```bash
+jshell HeroGame.java
+HeroGame game = new HeroGame();
+game.encounterEnemy(10);
 ```
 
-Utilize these insights to prevent variable shadowing issues in your game classes.
+#### Exercise 5 -- Overloaded Interaction
 
-### 🐞 Encounter a Bug or Error?
-Notify us by opening a [New Issue](https://yourcourse.edu/help/issues/new) with "Game Assignment Error:" followed by a summary. Acknowledgments will be given for reporting valid bugs!
+Use function overloading for different interactions:
+- One method for a simple encounter
+- Another that involves negotiation, e.g., `encounterEnemy(int power, int negotiationSkill)`.
 
-Good luck, and have fun creating your game! 🎮
+#### Exercise 6 -- Final Touches
+
+Combine modern Java features to enhance your game:
+- Use `toString` to print game state
+- Loop over game states to allow for repeated play
+- Test functions in JShell for immediate results.
+
+### ❎ Checklist
+
+- [ ] Create the `HeroGame.java` class and define fields.
+- [ ] Implement `movePlayer(int direction)` using a `while` loop.
+- [ ] Implement `calculateScore()` using a `for` loop.
+- [ ] Implement `encounterEnemy(int enemyPower)` and test using JShell.
+- [ ] Use function overloading for enemy interactions.
+- [ ] Experiment with JShell throughout your tasks for debugging and checking your logic.
+
+By the end of the assignment, you should be able to dynamically approach game scenarios using iterations, apply boolean logic to ensure desired game outcomes, utilize function overloading effectively, and test your code using JShell for rapid development and testing. Enjoy creating your very own mini-game! 🌟
