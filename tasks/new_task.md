@@ -1,107 +1,212 @@
-# Game Development: Hero's Quest
+# 📚 Comprehensive Java Exercise: Exploring Boolean Expressions, Loops, and Function Overloading
 
-Video games are a fascinating way to learn programming concepts such as loops, conditions, and interactions. This week, you'll be diving into the basics of game development by crafting a simple game application called "Hero's Quest." In this game, you will implement player movement, a scoring system, and interactions with enemies. You'll integrate boolean expressions, loops, and JShell experimentation along the way. Game on! 🎮
+Computers excel at performing repetitive tasks with precision. If you were asked to count to 10,000, it might be tedious and prone to errors, but a computer can do it perfectly every time. This concept of repeating actions is known as _iteration_ or _looping_. Today, we will explore different looping mechanisms in Java and how they interplay with boolean expressions and function overloading.
 
-### 👩‍🏫 Instructions
+### 👨‍🏫 Instructions
 
-For instructions on how to do and submit the assignment, please see the [assignments section of the course instructions](https://example.com/course-instructions#assignments).
+For instructions on how to complete and submit the assignment, please refer to the [assignments section of the course instructions](https://gits-15.sys.kth.se/inda-24/course-instructions#assignments).
 
 ### 📝 Preparation
 
-- Review the [lecture slides on Game Loops and Interactions](https://docs.google.com/presentation/d/12345/edit#slide=id.p)
-- Read about and understand:
-  - [Module: Boolean Logic and Loops](https://example.com/course/boolean-logic-loops)
-  - [Java Documentation: Function Overloading and JShell](https://docs.oracle.com/javase/tutorial/)
+- Review the [lecture slides](https://docs.google.com/presentation/d/1kcsmcuBBu4Jr3O_r6eNP6IFrP6DEITDWeRS5_7rtV30/edit#slide=id.p).
+- Read and answer questions in:
+  - [Module 5: Looping with for-each](https://qbl.sys.kth.se/sections/dd1337_programming/page/looping_with_foreach)
+  - [Module 6: Iteration](https://qbl.sys.kth.se/sections/dd1337_programming/page/iteration__continued)
 
 ### ✅ Learning Goals
 
-This week's learning goals include:
+This week's learning objectives are:
 
-* `boolean` expressions and operators
-* `while` loops
-* `for` loops
-* Using JShell to try your Java program
-* Function overloading
+- Understanding `boolean` expressions and operators
+- Efficient use of `while` loops
+- Mastery of `for` loops
+- Using JShell to try your Java program
+- Grasping Function overloading
 
 ### 🚨 Troubleshooting Guide
 
-If you have any questions or problems, follow this procedure: <br/>
+If you have any questions or issues, take these steps:
 
-1. Look at this week's [posted issues](https://example.com/help/issues). Are other students asking about your problem?
-2. If not, post a question yourself by creating a [New Issue](https://example.com/help/issues/new). Add a descriptive title, beginning with "Hero's Quest: summary of problem here."
-3. Ask a TA in person during the [weekly lab](https://example.com/queue). Check your schedule to see when the next lab is.
+1. Look at this week's [posted issues](https://gits-15.sys.kth.se/inda-24/help/issues) to see if others are experiencing similar problems.
+2. If not, create a [New Issue](https://gits-15.sys.kth.se/inda-24/help/issues/new) with a descriptive title beginning with "Task _x_: _summary of problem here_".
+3. Seek help from a TA during the [weekly lab](https://queue.csc.kth.se/Queue/INDA).
 
-We encourage you to discuss with your course friends, **but do not share answers!** Similarly, use of any AI services 🤖 is great for explanations, **but please do not submit AI-generated solutions** - you must be both responsible for your own solutions and must be able to explain them under examination.
+Discuss with your course mates, but **do not share answers**. If using AI services to understand concepts, **do not submit AI-generated solutions**. Be responsible for your code understanding and explanation.
 
 ### 🏛 Assignment
 
-In order to create your game, you must understand how the player interacts with the game world using `boolean` expressions, and how iterations (`while` and `for` loops) can manage game flow.
+Before implementing loops in Java, it’s pivotal to grasp how to specify the loop stopping condition, usually determined by evaluating _boolean expressions_. Here's a practical exploration:
 
 <details>
-<summary> 📚 Boolean values, expressions, and operators </summary>
-<! -- requires a blank space -->
+<summary> 📚 Boolean Expressions and Operators </summary>
 
-A [boolean value](https://en.wikipedia.org/wiki/Boolean_data_type) is a value that is either true or false. In Java, `boolean` is one of the 8 [primitive types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html), and can have the value `true` or `false`.
+A [boolean value](https://en.wikipedia.org/wiki/Boolean_data_type) is either true or false. Similarly, a [boolean expression](https://en.wikipedia.org/wiki/Boolean_expression) evaluates to true or false.
 
-Booleans help evaluate game conditions—like whether a player has collided with an enemy. Java uses `&&` for "and", `||` for "or" and `!` for "not".
+In Java, `boolean` is one of the eight [primitive types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html). It can have the value `true` or `false`.
+
+Example definitions in Java:
+```java
+boolean theCapitalOfMozambiqueIsMaputo = true;
+boolean twoEqualsFive = false;
+```
+
+Key boolean operators are `&&` (and), `||` (or), and `!` (not).
+
+Just like arithmetic, parentheses can influence evaluation order. For example, `true || (true && false)` is `true`, whereas `(true || true) && false` is `false`.
 
 </details>
 
-#### Exercise 1 -- Setting Up
+#### Exercise 1.1 – Boolean Expressions
 
-Create a new Java class named `HeroGame.java` in your `src` folder.
+In [`docs/README.md`](docs/README.md), fill the boolean value for each expression:
 
-#### Exercise 2 -- Implementing Player Movement
+| Boolean expression | Value   |
+| ------------------ | ------- |
+| `2 > 5`            |         |
+| `11 == 11`         |         |
+| `7 <= 9`           |         |
+| `42 >= 7`          |         |
+| `false == true`    |         |
 
-1. **Set Up Fields:** Create fields for player position (`x`, `y`) and health, ensuring they suit your game's requirements. Make sure they are private.
-2. **Movement Method:** Write a method using a `while` loop to handle continuous player movement. It should have the signature:
-   ```java
-   public void movePlayer(int direction)
-   ```
-   Use `boolean` expressions to determine movement within bounds (e.g., if the player tries to move outside game boundaries, stop them).
+#### Exercise 1.2 – Boolean Operators
 
-#### Exercise 3 -- Scoring System with Loops
+Fill in the table in [`docs/README.md`](docs/README.md):
 
-Add a method to calculate and display the player's score using a `for` loop. Players score points for every step taken without interaction with an enemy. Use the header:
+| Boolean expression   | Value |
+| -------------------- | ----- |
+| `2 == 3 && 2 == 2`   |       |
+| `2 == 3 || 2 == 2`   |       |
+| `!true`              |       |
+| `!false`             |       |
+
+> **Assistant's Tip:** Use [JShell](https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm) for evaluating Java expressions like `2 == 5`.
+
+#### Exercise 2.1 – The `while` Loop
+
+Create `Loops.java` in `src`. Add a method:
+
 ```java
-public void calculateScore()
+public void printOddNumbersUpTo(int n)
 ```
-The method should iterate over a journey log array, counting steps and updating the score.
 
-#### Exercise 4 -- Enemy Interactions
+This uses a `while` loop to print all odd numbers up to `n`.
 
-Write a method to simulate encounters with enemies:
+<details>
+<summary> 📘 Understanding the `while` loop</summary>
+
+The `while` loop is fundamental, continually executing while a condition remains true:
+
 ```java
-public boolean encounterEnemy(int enemyPower)
+int count = 0;
+while (count < 5) {
+    count += 1;
+}
 ```
-Use `boolean` logic to decide outcomes based on the player's health and the enemy's power. Test outcomes using JShell to see how `boolean` expressions evaluate during encounters:
+Predict the final `count` and test to confirm your intuition.
 
-```bash
-jshell HeroGame.java
-HeroGame game = new HeroGame();
-game.encounterEnemy(10);
+</details>
+
+#### Exercise 2.2 – Summing with a `while` loop
+
+Add to `Loops.java`:
+
+```java
+public int sumEvensUpTo(int max)
 ```
 
-#### Exercise 5 -- Overloaded Interaction
+This calculates the sum of even numbers from `0` to `max`, inclusive, return `0` if `max < 0`.
 
-Use function overloading for different interactions:
-- One method for a simple encounter
-- Another that involves negotiation, e.g., `encounterEnemy(int power, int negotiationSkill)`.
+#### Exercise 2.3 – Using `for` Loops
 
-#### Exercise 6 -- Final Touches
+Add to `Loops.java`:
 
-Combine modern Java features to enhance your game:
-- Use `toString` to print game state
-- Loop over game states to allow for repeated play
-- Test functions in JShell for immediate results.
+```java
+public int factorial(int n)
+```
+
+Use a `for` loop to compute and return the factorial of `n`.
+
+<details>
+<summary> 📘 Understanding the `for` loop</summary>
+
+A `for` loop condenses loop creation:
+
+```java
+for (int i = 0; i < 10; i++) {
+    System.out.println(i);
+}
+```
+
+More compact than its `while` loop equivalent:
+
+```java
+int i = 0;
+while (i < 10) {
+    System.out.println(i);
+    i += 1;
+}
+```
+
+</details>
+
+#### Exercise 2.4 – Expanding Functions
+
+Create additional methods in `Loops.java`:
+
+```java
+public int sumSquaresUpTo(int max)
+public double calculateHarmonicSum(int n)
+```
+
+Implement these with loops per the mathematical summations depicted.
+
+#### Exercise 3.1 – Time Implementation
+
+Construct `Clock.java` in `src`. Fields should track hours, minutes, and seconds, with appropriate privacy and public getter methods using camelCase.
+
+#### Exercise 3.2 – Valid Setter Methods
+
+Introduce validating setters: `setHours`, `setMinutes`, `setSeconds` ensuring valid inputs (hours: 1-12, minutes/seconds: 0-59).
+
+#### Exercise 3.3 – Constructors with Overloading
+
+Implement overloaded constructors:
+
+```java
+public Clock()
+public Clock(int hours, int minutes, int seconds)
+```
+Leverage setters for validating inputs.
+
+#### Exercise 3.4 – Override toString
+
+Override `toString` in `Clock` to format time as `HH:MM:SS`. Utilize `String.format`.
+
+#### Exercise 3.5 – Adding a `tick` Method
+
+Implement `public void tick()` in `Clock.java` to increment seconds, cascading to minutes and hours as necessary.
+
+#### Exercise 3.6 – Expanding `tick` Method
+
+Enhance `tick` with:
+
+```java
+public void tick(int seconds)
+```
+
+A loop (your choice of `for` or `while`) to increment time by specified seconds, using `tick()` method gradually.
 
 ### ❎ Checklist
 
-- [ ] Create the `HeroGame.java` class and define fields.
-- [ ] Implement `movePlayer(int direction)` using a `while` loop.
-- [ ] Implement `calculateScore()` using a `for` loop.
-- [ ] Implement `encounterEnemy(int enemyPower)` and test using JShell.
-- [ ] Use function overloading for enemy interactions.
-- [ ] Experiment with JShell throughout your tasks for debugging and checking your logic.
+1. [ ] Complete boolean exercises in `docs`.
+2. [ ] Implement `printOddNumbersUpTo(int n)` with a `while` loop.
+3. [ ] Implement `sumEvensUpTo(int max)` with a `while` loop.
+4. [ ] Implement `factorial(int n)` with a `for` loop.
+5. [ ] Implement extended functions with loops in `Loops.java`.
+6. [ ] Construct `Clock` class and include fields with accessors.
+7. [ ] Validate inputs through setter methods in `Clock`.
+8. [ ] Add constructors and use overloading intelligently in `Clock`.
+9. [ ] Override `toString` for `Clock` to represent time correctly.
+10. [ ] Implement `tick` methods in `Clock` to adjust time accurately.
 
-By the end of the assignment, you should be able to dynamically approach game scenarios using iterations, apply boolean logic to ensure desired game outcomes, utilize function overloading effectively, and test your code using JShell for rapid development and testing. Enjoy creating your very own mini-game! 🌟
+Tackle each task carefully, utilizing concepts like `boolean` expressions, loops, and overloading, refining your Java skills!
