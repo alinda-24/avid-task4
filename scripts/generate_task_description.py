@@ -33,10 +33,6 @@ def main(api_key):
             "but a computer will do so flawlessly every time. We call this concept _\"iteration\"_ or _\"looping\"_, and \n"
             "this week we will be looking at a couple of different ways of accomplishing this in Java.\n\n"
 
-            "### 👩‍🏫 Instructions\n\n"
-            "For instructions on how to do and submit the assignment, please see the\n"
-            "[assignments section of the course instructions](https://gits-15.sys.kth.se/inda-24/course-instructions#assignments).\n\n"
-
             "### 📝 Preparation\n\n"
             "- Review the [lecture slides](https://docs.google.com/presentation/d/1kcsmcuBBu4Jr3O_r6eNP6IFrP6DEITDWeRS5_7rtV30/edit#slide=id.p)\n"
             "- Read and answer all questions in: \n"
@@ -327,20 +323,6 @@ def main(api_key):
 
             "> **Assistant's note:** This is yet another example of _method (or function) overloading_, and you will see many more as you continue your Java adventures.\n\n"
 
-            "### ❎ Checklist\n\n"
-            "- [ ] Answer questions on boolean expressions in the docs folder.\n"
-            "- [ ] Create a `multiplesOfSeven()` method using a while loop.\n"
-            "- [ ] Create a `sumUpTo(int max)` method using a while loop.\n"
-            "- [ ] Create a `sumBetween(int min, int max)` method using a for-loop.\n"
-            "- [ ] Create a `sumSquares(int max)` method using either a while- or for-loop.\n"
-            "- [ ] Create a `sumReciprocals(int max)` method using either a while- or for-loop.\n"
-            "- [ ] Create `Clock.java` and add fields and getters for `hour`, `minute` and `second`.\n"
-            "- [ ] Add setter methods for `hour`, `minute`, `second` with proper validation.\n"
-            "- [ ] Add getter methods for `hour`, `minute`, `second` with proper camel case naming.\n"
-            "- [ ] Add two constructor methods for `Clock`.\n"
-            "- [ ] Override the `public String toString()` method to return the current time as `HH:MM:SS`.\n"
-            "- [ ] Add `public void tick()` method to increment the time by 1 second. Update all time units accordingly.\n"
-            "- [ ] Add `public void tick(int seconds)` method to increment the time by a specified number of seconds using a for- or while-loop.\n\n"
     """
 
     prompt = (f"Create a new programming task in {language} with the following theme: {theme}. "
