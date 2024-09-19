@@ -59,8 +59,8 @@ def generate_template_with_openai(client, solution_content):
         "Ensure that the structure is correct, and add comments like '// TODO: Implement this method.' where appropriate.\n\n"
         "### Solution Code:\n"
         f"{solution_content}\n\n"
-        "### Template Code:"
         "IMPORTANT: The response must be plain Java code with no markdown formatting or ```java blocks. "
+        "Remember to put the right code in the right java file and take consideration to the names of the java classes with condsideration to the file they are in."
     )
 
     template = generate_with_retries(client, prompt, max_retries=3)
